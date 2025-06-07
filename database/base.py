@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:2Kc161912@localhost/uasistencia"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://admin:2Kc161912@orlandolmsm-aws-db.cnug00aus5hr.us-east-2.rds.amazonaws.com/uasistencia"
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
