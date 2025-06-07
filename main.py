@@ -3,9 +3,14 @@ from sqlalchemy.orm import Session
 from database.base import Base, engine, get_db
 import database.models.models as models
 from fastapi.middleware.cors import CORSMiddleware
+import os
+import uvicorn
+
 #Importamos los routers
 from endpoints.routers import asistencias, carreras, credentials, planes, reportes, roles, users, grupos, materias, maestros, horarios
-app = FastAPI(    title="UASISTENCIA",
+
+app = FastAPI(
+    title="UASISTENCIA",
     description="UASISTENCIA API",
     version="1.0.0",
     openapi_tags=[{"name": "auth", "description": "Operaciones de autenticación"},
@@ -22,7 +27,8 @@ app = FastAPI(    title="UASISTENCIA",
     # Esto es lo que habilitará el envío de token por Swagger
     openapi_url="/openapi.json",
     docs_url="/docs",
-    redoc_url=None,)
+    redoc_url=None,
+)
 
 # Configurar CORS
 app.add_middleware(
@@ -48,9 +54,16 @@ app.include_router(maestros.router)
 app.include_router(asistencias.router)
 app.include_router(horarios.router)
 app.include_router(reportes.router)
+
 @app.get("/")
 async def read_root():
-    
     return {"Hola": "Que andas viendo pues"}
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
+# Configuración para Railway
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
