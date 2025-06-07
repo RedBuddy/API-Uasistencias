@@ -1,0 +1,52 @@
+# ===============================
+# General
+# ===============================
+
+# Logs y archivos temporales
+*.log
+*.swp
+*.swo
+.DS_Store
+.history
+.idea/
+.vscode/
+
+# ===============================
+# Flutter (UASistencia)
+# ===============================
+
+uasistencia/.dart_tool/
+uasistencia/.flutter-plugins
+uasistencia/.flutter-plugins-dependencies
+uasistencia/.packages
+uasistencia/.pub-cache/
+uasistencia/.pub/
+uasistencia/build/
+uasistencia/**/doc/api/
+uasistencia/**/ios/Flutter/.last_build_id
+
+# Archivos de simbolización
+uasistencia/app.*.symbols
+uasistencia/app.*.map.json
+
+# Archivos de compilación en Android
+uasistencia/android/app/debug
+uasistencia/android/app/profile
+uasistencia/android/app/release
+
+# ===============================
+# FastAPI
+# ===============================
+
+# Entorno virtual de Python
+.venv/
+venv/
+
+# Archivos de caché de Python
+**/*.pyc
+**/*.pyo
+**/__pycache__/
+.mypy_cache/
+
+# Archivos de migraciones temporales
+migrate_working_dir/
