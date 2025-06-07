@@ -14,7 +14,7 @@ class RolResponse(RolBase):
 
     class Config:
         from_atributes = True
-        orm_mode = True
+        
 
 # ----- Usuario -----
 class UsuarioBase(BaseModel):
@@ -39,7 +39,7 @@ class UsuarioResponse(UsuarioBase):
 
     class Config:
         from_atributes = True
-        orm_mode = True
+        
 
 # ----- Carrera -----
 class CarreraBase(BaseModel):
@@ -52,7 +52,6 @@ class CarreraCreate(CarreraBase):
 class CarreraResponse(CarreraBase):
     id: int
     class Config:
-        orm_mode = True
         from_atributes = True
 
 # ----- Plan de Estudio -----
@@ -68,9 +67,9 @@ class PlanEstudioResponse(PlanEstudioBase):
     id: int
     carrera: CarreraResponse
 
-    class Config:
-        orm_mode = True
-        from_atributes = True
+    model_config = {
+        "from_attributes": True
+    }
 
 # ----- Grupo -----
 class GrupoBase(BaseModel):
@@ -86,9 +85,9 @@ class GrupoResponse(GrupoBase):
     plan_estudio: PlanEstudioResponse
     jefe_grupo: UsuarioResponse
 
-    class Config:
-        orm_mode = True
-        from_atributes = True
+    model_config = {
+        "from_attributes": True
+    }
 
 # ----- Materia -----
 class MateriaBase(BaseModel):
@@ -103,7 +102,7 @@ class MateriaResponse(MateriaBase):
     plan_estudio: PlanEstudioResponse
 
     class Config:
-        orm_mode = True
+        
         from_atributes = True
 
 class MateriaEdit(BaseModel):
@@ -128,7 +127,6 @@ class HorarioResponse(HorarioBase):
     maestros: UsuarioResponse
 
     class Config:
-        orm_mode = True
         from_atributes = True
 
 # ----- Asistencia -----
@@ -153,7 +151,6 @@ class AsistenciaResponse(AsistenciaBase):
     horarios: HorarioResponse
 
     class Config:
-        orm_mode = True
         from_atributes = True
 
 # ----- HorarioMateriaMaestro -----
